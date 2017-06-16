@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" SizeChanged="Grid_SizeChanged">
+        <!--Change Source to url of your Choice-->
         <WebView x:Name="webView1" Source="https://www.netflix.com/"/>
         <CommandBar x:Name="CommandBar" Background="#7FE6E6E6">
             <AppBarButton x:Name="FocuseMode" Click="Focus_Click" Label="Fullscreen">
