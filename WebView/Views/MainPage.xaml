@@ -6,19 +6,30 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" SizeChanged="Grid_SizeChanged">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Background="White" Grid.Row="0" x:Name="TitleBar">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="BackButtonGrid">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="FocuseMode" Content="&#xE1D9;" Click="Focus_Click" Style="{StaticResource TitleBarButtonStyle}" />
+                    <Button x:Name="MiniMode" Content="&#xF16E;" Click="MiniView_Click" Style="{StaticResource TitleBarButtonStyle}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1" x:Name="MainTitleBar" Background="Transparent">
+            <TextBox  Grid.Column="2" x:Name="textBox" Text="https://www.netflix.com/" />
+            </Grid>
+            <Grid Grid.Column="3" x:Name="RightMask">
+            </Grid>
+        </Grid>
         <!--Change Source to url of your Choice-->
-        <WebView x:Name="webView1" Source="https://www.netflix.com/"/>
-        <CommandBar x:Name="CommandBar" Background="#7FE6E6E6">
-            <AppBarButton x:Name="FocuseMode" Click="Focus_Click" Label="Fullscreen">
-                <AppBarButton.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE1D9;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-            <AppBarButton x:Name="MiniMode" Click="MiniView_Click" Label="Fullscreen">
-                <AppBarButton.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8A7;" />
-                </AppBarButton.Icon>
-            </AppBarButton>
-        </CommandBar>
+        <WebView x:Name="webView1" Grid.Row="1" Source="{Binding Text, ElementName=textBox}"/>
     </Grid>
 </Page>
